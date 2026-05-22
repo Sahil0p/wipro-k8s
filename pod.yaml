@@ -5,6 +5,6 @@ metadata:
 spec:
   containers:
     - name: vegetable-container
-      image: vegetable:v1.0.0
+      image: sahilahmed0029/vegetable:v1.0.0
       ports:
-        - containerPort: 3000 
+        - containerPort: 3000
