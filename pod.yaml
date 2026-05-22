@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sahil-pod
+spec:
+  containers:
+    - name: vegetable-container
+      image: vegetable:v1.0.0
+      ports:
+        - containerPort: 3000 
