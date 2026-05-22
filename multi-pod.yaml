@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sahil-pod
+spec:
+  containers:
+    - name: sahil-container-loc
+      image: sahilahmed0029/loc:v1.0.0
+      ports:
+        - containerPort: 5000
+    
+    - name: sahil-container-vegetable
+      image: sahilahmed0029/vegetable:v1.0.0 
+      ports:
+        - containerPort: 3000
