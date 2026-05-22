@@ -5,6 +5,6 @@ metadata:
 spec:
   containers:
     - name: sahil-container
-      image: sahilahmed0029/vegetable:v1.0.0
+      image: sahilahmed0029/organic-ghee:latest
       ports:
-        - containerPort: 3000
+        - containerPort: 5656
