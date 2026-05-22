@@ -4,7 +4,7 @@ metadata:
   name: sahil-pod
 spec:
   containers:
-    - name: vegetable-container
+    - name: sahil-container
       image: sahilahmed0029/vegetable:v1.0.0
       ports:
         - containerPort: 3000
