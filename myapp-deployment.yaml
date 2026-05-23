@@ -25,7 +25,6 @@ spec: #Behavior of the replicaset
               valueFrom:
                 secretKeyRef:
                   name: mongo-secret
-                  key: mongodb+srv://sahilahmed0029_db_user:6nRfGLSyzEGCnnds@cluster0.a1ndmrg.mongodb.net/
-
+                  key: MONGO_URI
 
   
