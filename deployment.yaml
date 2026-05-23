@@ -21,5 +21,20 @@ spec: #Behavior of the replicaset
           ports:
             - containerPort: 80
 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-Service
+spec:
+  selector:
+    app: web
+ports:
+  - protocol: Tcp
+    port: 85
+    targetPort: 80
+type: CusterIp
+
+
 
   

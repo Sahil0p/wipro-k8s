@@ -27,4 +27,12 @@ spec: #Behavior of the replicaset
                   name: mongo-secret
                   key: MONGO_URI
 
-  
+
+# Do this before applying deployment beacuse my app have mongo conection  
+# root@controlplane:~/wipro-k8s$ kubectl create secret generic mongo-secret \
+# --from-literal=MONGO_URI="mongodb+srv://sahilahmed0029_db_user:6nRfGLSyzEGCnnds@cluster0.a1ndmrg.mongodb.net/"
+# secret/mongo-secret created
+
+# root@controlplane:~/wipro-k8s$ kubectl get secrets
+# NAME           TYPE     DATA   AGE
+# mongo-secret   Opaque   1      16s
