@@ -25,15 +25,15 @@ spec: #Behavior of the replicaset
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-Service
+  name: my-service
 spec:
   selector:
     app: web
-ports:
-  - protocol: Tcp
-    port: 85
-    targetPort: 80
-type: CusterIp
+  ports:
+    - protocol: Tcp
+      port: 85
+      targetPort: 80
+  type: CusterIP
 
 
 
