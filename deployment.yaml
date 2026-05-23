@@ -18,7 +18,7 @@ spec: #Behavior of the replicaset
       containers:
         - name: nginx-cont
           image: nginx:latest
-          port:
+          ports:
             containerPort: 80
 
 
