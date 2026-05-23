@@ -20,6 +20,9 @@ spec: #Behavior of the replicaset
           image: sahilahmed0029/ratemystore:latest
           ports:
             - containerPort: 5000
+          env:
+            - name: MONGO_URI
+              value: "mongodb+srv://sahilahmed0029_db_user:6nRfGLSyzEGCnnds@cluster0.a1ndmrg.mongodb.net/"
 
 
   
