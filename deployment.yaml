@@ -5,86 +5,44 @@ metadata:
   labels:
     first: app
 
-spec:
+spec: #Behavior of the replicaset
   replicas: 2
-
   selector:
     matchLabels:
       app: web
-
   template:
     metadata:
       labels:
         app: web
-
-    spec:
+    spec: # spec & behavior of the pod
       containers:
         - name: nginx-cont
           image: nginx:latest
           ports:
             - containerPort: 80
-
         - name: loc
           image: sahilahmed0029/loc:v1.0.0
           ports:
             - containerPort: 5000
-
         - name: vegetable
-          image: sahilahmed0029/vegetable:v1.0.0
+          image: sahilahmed0029/vegetable:v1.0.0 
           ports:
             - containerPort: 3000
 
 ---
-# ClusterIP Service for nginx
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-service
-
+  name: my-service
 spec:
   selector:
     app: web
-
   ports:
     - protocol: TCP
       port: 85
       targetPort: 80
-
   type: ClusterIP
 
----
-# NodePort Service for loc container
-apiVersion: v1
-kind: Service
-metadata:
-  name: loc-service
 
-spec:
-  selector:
-    app: web
 
-  ports:
-    - protocol: TCP
-      port: 5000
-      targetPort: 5000
-      nodePort: 30007
-
-  type: NodePort
-
----
-# LoadBalancer Service for vegetable container
-apiVersion: v1
-kind: Service
-metadata:
-  name: vegetable-service
-
-spec:
-  selector:
-    app: web
-
-  ports:
-    - protocol: TCP
-      port: 3000
-      targetPort: 3000
-
-  type: LoadBalancer
+  

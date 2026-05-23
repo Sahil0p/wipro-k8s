@@ -1,0 +1,199 @@
+# =========================
+# NGINX DEPLOYMENT
+# =========================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: nginx
+
+  template:
+    metadata:
+      labels:
+        app: nginx
+
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+
+          ports:
+            - containerPort: 80
+
+---
+# =========================
+# NGINX SERVICE
+# =========================
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: nginx-service
+
+spec:
+  selector:
+    app: nginx
+
+  ports:
+    - protocol: TCP
+      port: 85
+      targetPort: 80
+
+  type: ClusterIP
+
+---
+# =========================
+# LOC DEPLOYMENT
+# =========================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loc
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: loc
+
+  template:
+    metadata:
+      labels:
+        app: loc
+
+    spec:
+      containers:
+        - name: loc
+          image: sahilahmed0029/loc:v1.0.0
+
+          ports:
+            - containerPort: 5000
+
+---
+# =========================
+# LOC SERVICE
+# =========================
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: loc-service
+
+spec:
+  selector:
+    app: loc
+
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+      nodePort: 30007
+
+  type: NodePort
+
+---
+# =========================
+# GHEE DEPLOYMENT
+# =========================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ghee
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: ghee
+
+  template:
+    metadata:
+      labels:
+        app: ghee
+
+    spec:
+      containers:
+        - name: ghee
+          image: sahilahmed0029/organic-ghee:latest
+
+          ports:
+            - containerPort: 5656
+
+---
+# =========================
+# GHEE SERVICE
+# =========================
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: ghee-service
+
+spec:
+  selector:
+    app: ghee
+
+  ports:
+    - protocol: TCP
+      port: 5656
+      targetPort: 5656
+
+  type: LoadBalancer
+
+---
+# =========================
+# MONGODB DEPLOYMENT
+# =========================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: mongodb
+
+  template:
+    metadata:
+      labels:
+        app: mongodb
+
+    spec:
+      containers:
+        - name: mongodb
+          image: mongo:latest
+
+          ports:
+            - containerPort: 27017
+
+---
+# =========================
+# MONGODB SERVICE
+# =========================
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: mongodb-service
+
+spec:
+  selector:
+    app: mongodb
+
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017
+
+  type: ClusterIP
