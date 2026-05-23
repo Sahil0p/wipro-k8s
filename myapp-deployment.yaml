@@ -22,7 +22,10 @@ spec: #Behavior of the replicaset
             - containerPort: 5000
           env:
             - name: MONGO_URI
-              value: "mongodb+srv://sahilahmed0029_db_user:6nRfGLSyzEGCnnds@cluster0.a1ndmrg.mongodb.net/"
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: "mongodb+srv://sahilahmed0029_db_user:6nRfGLSyzEGCnnds@cluster0.a1ndmrg.mongodb.net/"
 
 
   
