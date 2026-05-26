@@ -231,6 +231,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: sahil-configmap
+            - secretRef:
+                name: sahil-secret
 ---
 apiVersion: v1
 kind: Service

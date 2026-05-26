@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Secret
+
+metadata:
+  name: sahil-secret
+
+type: Opaque
+
+data:
+  DB_User: QURNSU4=
+  DB_Pass: cGFzc3dvcmQ=
